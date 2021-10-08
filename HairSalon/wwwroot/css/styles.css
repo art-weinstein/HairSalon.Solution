@@ -1,0 +1,21 @@
+body {
+  font-family: 'Dosis', sans-serif;
+  background-color: bisque;
+  }
+  
+  .container {
+    padding: 3% 0 0 0;
+  }
+  
+  h1 {
+    padding: 2% 0;
+  }
+  
+  .column {
+    float:right;
+    width:10%;
+  }
+  
+  .column a {
+    color:#fff;
+  }
