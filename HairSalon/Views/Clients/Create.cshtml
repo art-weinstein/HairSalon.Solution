@@ -1,17 +1,21 @@
 @model HairSalon.Models.Client
 
+
 <h4>Add a new client</h4>
+
+<h3>Note, no client will be added if no stylists are employed. Click @Html.ActionLink("here", "Create", "Stylists") to add a new stylist!</h3>
+
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model=>model.ClientName)
-  @Html.TextBoxFor(model=>model.ClientName)
+  <p>@Html.LabelFor(model=>model.ClientName)</p>
+  <p>@Html.TextBoxFor(model=>model.ClientName)</p>
   
-  @Html.LabelFor(model=>model.ClientPhone)
-  @Html.TextBoxFor(model=>model.ClientPhone)
+  <p>@Html.LabelFor(model=>model.ClientPhone)</p>
+  <p>@Html.TextBoxFor(model=>model.ClientPhone)</p>
 
-  @Html.LabelFor(model=>model.Stylist)
-  @Html.DropDownList("StylistId")
-  <input type="submit" value="Add a new client" class="btn btn-info" />
+  <p>@Html.LabelFor(model=>model.Stylist)</p>
+  <p>@Html.DropDownList("StylistId")</p>
+  <p><input type="submit" value="Add a new client" class="btn btn-info" /></p>
 }
 
 <p>@Html.ActionLink("Show all clients", "Index")</p>
