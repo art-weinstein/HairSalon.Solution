@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using HairSalon.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,10 +19,10 @@ namespace HairSalon.Controllers
     public ActionResult Index()
     {
       List<Stylist> model = _db.Stylists.ToList();
-      return view(model);
+      return View(model);
     }
 
-    public AcitonResult Create()
+    public ActionResult Create()
     {
       return View();
     }
@@ -37,13 +37,13 @@ namespace HairSalon.Controllers
 
     public ActionResult Details(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(StylistsController => stylist.Stylist.Id == id);
+      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
       return View(thisStylist);
     }
 
     public ActionResult Edit(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(StylistsController => stylist.Stylist.Id == id);
+      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
       return View(thisStylist);
     }
 
@@ -56,15 +56,15 @@ namespace HairSalon.Controllers
     }
     public ActionResult Delete(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(StylistsController => stylist.Stylist.Id == id);
+      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
       return View(thisStylist);
     }
-    
+
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
       var thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-      _db.Categories.Remove(thisStylist);
+      _db.Stylists.Remove(thisStylist);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
